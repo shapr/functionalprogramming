@@ -1,0 +1,246 @@
+% Shae Erisson <serisson@una.edu>
+% University of North Alabama
+% 09/27/12
+% ghclive
+
+%% TODO: remove text from picture slides, just say that?
+%% XXXintroduce haskell and irc earlier, definitions slide
+%% big picture of what haskell is, what the environment is
+% hpaste, lambdabot eval?
+%% sooner, faster, earlier!
+% more time talking about Haskell
+% google docs handles real-time collab, but not source code
+% user feedback:
+% people would like to see the cursor location for collaborators
+% people would like multiple tabs for multiple source files
+% people want this for Python, Ruby and C++ at least
+% if you do research on humans: human subjects board - irb
+
+%% stretch pictures so text in pix is slide sized!
+%% GSoC slide should just have numbers, text should be my presenter notes
+%% be VERY clear about the problem: helping novice programmers learn haskell across text chat
+%% slow down by 50%, this is new information to most listeners
+
+%% I want people to take away from this: my solution to the problem of teaching across the 'net
+%% is a good solution, and can be generalized to other programming languages
+
+\documentclass[xcolor=pdftex,dvipsnames,table]{beamer}
+% Do NOT load xcolor and graphicx, beamer already loads these
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{haskelllogo}
+\usepackage{minted}
+% Set theme to UNA
+\usetheme{UNA}
+
+% ##############################################################################
+% Add "handout" to the documentclass options
+% Uncomment the following line for handouts
+%\usepackage{pgfpages}
+% Uncomment 1 of the 2 following lines for handouts
+%\pgfpagesuselayout{4 on 1}[letterpaper,landscape,border shrink=5mm]
+%\pgfpagesuselayout{2 on 1}[letterpaper,border shrink=5mm]
+% ##############################################################################
+
+% Title page information
+\title[University of North Alabama]{Functional Programming Languages}
+\author[CS470 Artificial Intelligence]{Andrew Aaron,Shae Erisson,PengCheng Zhao}
+\institute[University of North Alabama]{Department of Computer Science and Information Systems\\University of North Alabama}
+\date{April 15, 2013}
+
+\begin{document}
+
+% Make a title frame
+\begin{frame}
+  \maketitle
+\end{frame}
+
+% Make an automatic outline frame, relies on sections and subsections
+%% \begin{frame}
+%%   \frametitle{Presentation outline}
+%%   % \tableofcontents
+%%   \setbeamercovered{dynamic}
+%%   \begin{itemize}
+%%   \item Background
+%%     \pause
+%%   \item Problem
+%%     \pause
+%%   \item Proposal
+%%     \pause
+%%   \item Conclusion
+%%   \end{itemize}
+%% \end{frame}
+
+\section{Introduction}
+\subsection{What will we cover?}
+\begin{frame} % \subsection{Google Summer of Code}
+  \frametitle{What will we cover?}
+  \setbeamercovered{dynamic}
+  \begin{itemize}
+  \item What is functional programming?
+  \item Why is it useful for AI?
+  \item What does it look like?
+  \item Where do I get one?
+  \item How can I benefit from all this awesome?
+  \end{itemize}
+\end{frame}
+
+\subsection{What should you know after these two classes?}
+\begin{frame}
+  \frametitle{What should you know after these two classes?}
+  \begin{itemize}
+  \item What's good and bad about functional programming
+  \item How it might benefit you
+  \end{itemize}
+\end{frame}
+
+\section{What is Functional Programming?}
+\subsection{Definitions}
+\begin{frame}
+  \frametitle{Definitions}
+  \begin{itemize}
+  \item function - as in math
+  \item functional - functions as first-class values
+  \item purely functional - lack of side effects
+  \end{itemize}
+\end{frame}
+\subsection{What is it good for?}
+\begin{frame}
+  \frametitle{What is it good for?}
+  \begin{itemize}
+  \item Math
+  \item Algorithms
+  \item Prototyping
+  \end{itemize}
+\end{frame}
+
+\subsection{Who uses it?}
+\begin{frame}
+  \frametitle{Who uses it?\footnote{\url{http://www.haskell.org/haskellwiki/Haskell_in_industry}}}
+  \begin{itemize}
+  \item Facebook
+  \item Google
+  \item AT\&T
+  \item NVidia
+  \item Alcatel-Lucent
+  \end{itemize}
+\end{frame}
+
+\subsection{What makes it better?}
+\begin{frame}
+  \frametitle{What makes it better?}
+  \begin{itemize}
+  \item Garbage collection, no memory leaks!
+  \item Works like an equation
+  \item implicit data traversal simplifies loops
+  \item first class functions make code easier to write and read
+  \item Requires less time to get a working program
+  \end{itemize}
+\end{frame}
+
+\subsection{What makes it worse?}
+
+\begin{frame}
+  \frametitle{What makes it worse?}
+  \begin{itemize}
+  \item Garbage collection costs more CPU cycles
+  \item Requires more memory to compile and run
+  \item Haskell/Scheme is not C++, or even close
+  \end{itemize}
+\end{frame}
+
+\section{Why is functional programming useful for AI?}
+\subsection{Why is it useful for AI?}
+\begin{frame}
+  \frametitle{Why is it useful for AI?}
+  \begin{itemize}
+  \item Working programs produced inside research budgets
+  \item Academics favor equational reasoning
+  \item lack of side effects eases composition
+  \end{itemize}
+\end{frame}
+
+\subsection{How is functional different from imperative?}
+\begin{frame}
+  \frametitle{How is functional different from imperative?}
+  \begin{itemize}
+  \item functions are values
+  \item purely functional means variables don't vary
+  \item recursion instead of loops
+  \end{itemize}
+\end{frame}
+
+
+\subsection{Could this make your homework easier?}
+\begin{frame}
+  \frametitle{Could this make your homework easier?}
+  \begin{itemize}
+  \item Can these features simplify your C++ homework?
+  \item Yes, I mean you in the back row!
+  \end{itemize}
+\end{frame}
+
+\subsection{What does one look like?}
+\begin{frame}
+  \frametitle{What does one look like?}
+  \mint{haskell}|factorial n = product [1..n]|
+  \inputminted{scheme}{fac.scm}
+\end{frame}
+
+
+\subsection{What's unique about Haskell?}
+\begin{frame}
+  \frametitle{What's unique about Haskell?}
+  \begin{itemize}
+  \item \textbf{purely} functional
+  \item laziness
+  \item type system
+  \item data types
+  \end{itemize}
+\end{frame}
+
+\subsection{What's unique about Scheme?}
+\begin{frame}
+  \frametitle{What's unique about Scheme?}
+  \begin{itemize}
+  \item data and programs are the same
+  \item excessive use of lists
+  \end{itemize}
+\end{frame}
+
+\subsection{Questions?}
+\begin{frame}[plain]
+  \label{thanks}
+  \frametitle{Questions?}
+  \begin{center}
+    \textbf{Thank you!}
+  \end{center}
+  \begin{itemize}
+  \item http://github.com/shapr/ghclive
+  \item http://ghclive.wordpress.com
+  \end{itemize}
+  \vspace{0.5cm}
+  \begin{center}
+    \begin{minipage}{11cm}
+      \begin{columns}[c]
+        \column{.2\textwidth}
+        % \includegraphics[scale=.25]{faculty-web}
+        \column{.8\textwidth}
+        Shae Erisson\\
+        Dept. of Computer Science \& Information Systems\\
+        University of North Alabama\\
+        \url{http://www.ScannedInAvian.com/}
+      \end{columns}
+    \end{minipage}
+  \end{center}
+\end{frame}
+
+
+%\begin{frame}
+%  \begin{center}
+%    Thank You
+%  \end{center}
+%\end{frame}
+
+\end{document}

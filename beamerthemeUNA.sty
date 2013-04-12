@@ -1,0 +1,46 @@
+% ==============================================================================
+% University of North Alabama presentation theme for beamer
+%
+% James A. Jerkins <jajerkins@una.edu>
+%
+% Changelog:
+%   Version 0.1, 02/29/2012
+%
+% ==============================================================================
+\ProvidesPackage{beamerthemeUNA}
+  [2012/02/29 v0.1 beamer 'UNA' theme]
+ 
+% We start with Copenhagen and then modify it
+\usetheme{Copenhagen}
+
+% Setup UNA customization
+
+\useoutertheme{split}
+
+\usecolortheme[RGB={79,38,132}]{structure}  % UNA Purple
+
+\definecolor{UNAGold}{RGB}{219,159,17}
+\setbeamercolor{frametitle}{fg=UNAGold}
+
+\setbeamercolor{footline}{fg=UNAGold,bg=Black}
+\setbeamerfont{footline}{fg=UNAGold,size=\tiny}
+
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{footline}{
+  \leavevmode
+  \hbox{
+    \begin{beamercolorbox}[ht=4ex,leftskip=0.25cm,wd=.5\textwidth]{}
+    \includegraphics[height=40px]{una-logo}
+    \hspace{0.1cm}
+    \insertshortinstitute
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[ht=4ex,rightskip=0.5cm,wd=.5\textwidth]{}
+    \hfill
+    \insertshortauthor
+    \end{beamercolorbox}
+  }
+  \vskip5pt
+}
+% End UNA customization
+
